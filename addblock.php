@@ -1,4 +1,13 @@
 <?php
+	$password = '';
+
+	if (empty($password)) {
+		exit('Disabled: password configuration required.');
+	}
+	else if (!isset($_GET['password']) || $_GET['password'] !== $password) {
+		exit('Access denied.');
+	}
+
 	$result = '';
 	$name = '';
 	$config = array(
