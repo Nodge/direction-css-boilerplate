@@ -1,3 +1,6 @@
 [submodule "app/components/jquery.bem"]
 	path = app/components/jquery.bem
 	url = https://github.com/ethernet1/bem.git
+[submodule "framework"]
+	path = framework
+	url = https://github.com/Nodge/direction-css.git
