@@ -1,0 +1,54 @@
+
+html {
+	overflow: auto; // hide scrollbar automatically
+}
+
+.d-container {
+	min-width: 960px;
+	max-width: 1200px;
+}
+
+// web fonts as default font
+body {
+	.open-sans();
+}
+
+//p {
+//	margin-bottom: 14px;
+//}
+
+.d-text {
+	/*h1, h2, h3, h4 {
+		margin: @baseLineHeight 0 @baseLineHeight/2;
+	}*/
+
+//	ul {
+//		list-style: none;
+//
+//		li {
+//			&:before {
+//				content: '';
+//				position: absolute;
+//				display: block;
+//				width: 6px;
+//				height: 6px;
+//				margin-left: -17px;
+//				margin-top: 6px;
+//				background: #4b93cd;
+//				border-radius: 6px;
+//			}
+//		}
+//	}
+
+	table {
+		.d-table-base > .bordered();
+		.d-table-base > .striped();
+		.d-table-base > .hover();
+
+		&.d-table-condensed {
+			.d-table-base > .condensed();
+		}
+	}
+}
+
+

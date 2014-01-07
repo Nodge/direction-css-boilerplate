@@ -1,0 +1,70 @@
+// Variables and mixins
+@import "includes";
+
+// CSS Utils
+@import "../../../framework/css/utils/reset";
+
+// Layout
+@import "../../../framework/css/layout/grid";
+//@import "../../../framework/css/layout/responsive";
+
+// Typography base
+@import "../../../framework/css/typography/base";
+@import "../../../framework/css/typography/tables";
+@import "../../../framework/css/typography/classes";
+
+// Typography everywhere
+//@import "../../../framework/css/typography/lists";
+@import "../../../framework/css/typography/misc";
+//@import "../../../framework/css/typography/code";
+//@import "../../../framework/css/typography/content";
+
+// Typography in a text blocks
+.d-text {
+	@import "../../../framework/css/typography/lists";
+//	@import "../../../framework/css/typography/misc";
+	@import "../../../framework/css/typography/code";
+	@import "../../../framework/css/typography/content";
+}
+
+// Forms
+@import "../../../framework/css/forms/normalize";
+//@import "../../../framework/css/forms/elements";
+@import "../../../framework/css/forms/classes";
+@import "../../../framework/css/forms/layouts";
+@import "../../../framework/css/forms/buttons";
+@import "../../../framework/css/forms/buttons-variants";
+
+
+// -------------------
+
+
+// components
+//@import "../../components/webfonts/css/webfonts"; // moved to includes.less
+
+// global styles
+@import "global";
+
+// layout blocks
+@import "../../blocks/page/css/page";
+@import "../../blocks/page-header/css/page-header";
+@import "../../blocks/page-footer/css/page-footer";
+
+// general blocks
+@import "../../blocks/block/css/block";
+@import "../../blocks/breadcrumbs/css/breadcrumbs";
+@import "../../blocks/pager/css/pager";
+@import "../../blocks/file/css/file";
+
+// block parts
+//@import "../../blocks/button/css/button";
+
+// content blocks
+@import "../../blocks/main-menu/css/main-menu";
+@import "../../blocks/search-block/css/search-block";
+@import "../../blocks/content-gallery/css/content-gallery";
+@import "../../blocks/content-downloads/css/content-downloads";
+@import "../../blocks/seenta/css/seenta";
+
+// pages
+@import "../../pages/page-front/css/page-front";

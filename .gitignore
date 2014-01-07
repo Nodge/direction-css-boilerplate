@@ -1,0 +1,10 @@
+vendor
+composer.lock
+app/components/bower_components
+app/compiled.css
+
+# ide
+.idea
+
+# Any incompleted and temporary files
+-*

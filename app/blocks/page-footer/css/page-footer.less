@@ -1,0 +1,47 @@
+
+html {
+	/* position: relative; */
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	/* position: relative; */
+	width: 100%;
+	height: 100%;
+}
+
+.page-footer {
+	position: relative;
+	height: @fixed-footer-height;
+	margin-top: (@fixed-footer-height * -1);
+	padding: 25px 0 0;
+	background: #f0f0f0;
+	z-index: 2;
+
+	&__inner {
+
+	}
+
+	.search-block {
+
+	}
+
+	.seenta {
+		float: right;
+	}
+}
+
+// Override page for sticky footer
+.page {
+	&__container {
+		min-height: 100%;
+	}
+
+	&__main-container:after {
+		content: '';
+		display: block;
+		width: 1px;
+		height: @fixed-footer-height;
+	}
+}

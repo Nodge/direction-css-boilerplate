@@ -1,0 +1,489 @@
+<div class="page__container">
+  <header class="page__header page-header">
+    <div class="page-header__inner d-container">
+      <div class="page-header__sitename">
+        <div class="page-header__sitename-title">
+          <a href="/" title="Главная" rel="home">Direction CSS Framework</a>
+        </div>
+      </div>
+
+      <div class="block search-block">
+        <div class="block__content">
+          <form action="/?test=search" method="get" accept-charset="UTF-8" class="search-block-form d-form-inline">
+            <div class="d-form-group">
+              <input type="text" name="text" value="" size="30" maxlength="128" class="d-form-control search-block__input" placeholder="Search" />
+            </div>
+            <div class="d-form-group">
+              <input type="submit" name="" value="Search" class="search-block__submit" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <nav class="block main-menu" role="navigation">
+        <h2 class="block__title">Main menu</h2>
+        <div class="menu-block-wrapper">
+          <ul class="menu">
+            <li class="active"><a href="./" class="active">Home</a></li>
+            <li><a href="?test=grid">Grid</a></li>
+            <li><a href="?test=forms">Forms</a></li>
+            <li><a href="?test=403">403</a></li>
+            <li><a href="?test=404">404</a></li>
+            <li><a href="?test=contact">Contacts</a></li>
+            <li><a href="?test=login">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page__main-container d-container">
+    <div class="d-row">
+      <aside class="page__sidebar page__sidebar_left d-col-5">
+        <div class="block drupal-base-download">
+          <h2 class="block__title">Download the lattest version</h2>
+          <div class="block__content">
+            <form method="post" action="?test=download" class="d-form-vertical">
+              <div class="d-form-group">
+                <label for="edit-site-name" class="d-label">Site name <span class="d-required" title="Required.">*</span></label>
+                <input type="text" id="edit-site-name" name="site-name" value="" size="36" maxlength="60" class="d-form-control" />
+                <div class="d-help-block">Human-readable site name.</div>
+              </div>
+              <div class="d-form-group">
+                <label for="edit-site-alias" class="d-label">Site machine name <span class="d-required" title="Required.">*</span></label>
+                <input type="text" id="edit-site-alias" name="site-alias" value="" size="36" maxlength="60" class="d-form-control" />
+                <div class="d-help-block">Machine-readable site name. Only letters, digits and underscore.</div>
+              </div>
+              <div class="d-form-group">
+                <label for="edit-site-db-user" class="d-label">DB username <span class="d-required" title="Required.">*</span></label>
+                <input type="text" id="edit-site-db-user" name="site-db-user" value="" size="36" maxlength="60" class="d-form-control" />
+              </div>
+              <div class="d-form-group">
+                <label for="edit-site-db-password" class="d-label">DB password <span class="d-required" title="Required.">*</span></label>
+                <input type="text" id="edit-site-db-password" name="site-db-password" value="" size="36" maxlength="60" class="d-form-control" />
+              </div>
+              <div class="d-form-group">
+                <label for="edit-site-db-name" class="d-label">DB name <span class="d-required" title="Required.">*</span></label>
+                <input type="text" id="edit-site-db-name" name="site-db-name" value="" size="36" maxlength="60" class="d-form-control" />
+              </div>
+              <div class="d-form-group">
+                <label for="edit-site-db-host" class="d-label">DB host <span class="d-required" title="Required.">*</span></label>
+                <input type="text" id="edit-site-db-host" name="site-db-host" value="localhost" size="36" maxlength="60" class="d-form-control" />
+              </div>
+              <div class="d-form-group">
+                <input type="submit" name="" value="Download" class="d-btn d-btn-primary d-btn-block" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </aside>
+
+      <section class="page__content-container d-col-19">
+        <nav class="breadcrumb" role="navigation">
+          <h2 class="breadcrumb__title d-hidden">You are here</h2>
+          <ol class="breadcrumb__list">
+            <li class="breadcrumb__item">
+              <a href="/">Home</a>
+              <span class="breadcrumb__item breadcrumb__item__separator"> › </span>
+            </li>
+            <li class="breadcrumb__item">Test page</li>
+          </ol>
+        </nav>
+
+        <a id="main-content"></a>
+
+        <h1 class="page__title">Test page</h1>
+
+        <div class="page__content">
+          <article class="node-4 node node-page node-view-full clearfix">
+            <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+              <div class="field-items">
+                <div class="field-item d-text even">
+                  <h2>Paragraphs &amp; Boxes</h2>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+
+                  <!--  ################### -->
+
+                  <h3>Normal paragraph</h3>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&nbsp;Lorem ipsum dolor sit
+                    amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </p>
+
+                  <p>
+                    <img class="d-left" src="images/large_wall4you_677.jpg" alt="Example image" width="180" height="180" />
+                    Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <sub>sub text</sub> ut
+                    labore et <sup>sup text</sup> magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor&nbsp;<sub>sub
+                    text</sub>&nbsp;ut labore et&nbsp;<sup>sup text</sup>&nbsp;magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    laborum.&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor&nbsp;<sub>sub
+                    text</sub>&nbsp;ut labore et&nbsp;<sup>sup text</sup>&nbsp;magna aliqua. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                    est laborum.&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  </p>
+
+                  <!--  ################### -->
+
+                  <h3>Different headings</h3>
+
+                  <h4>Header 4</h4>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+
+                  <h5>Header 5</h5>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+
+                  <h6>Header 6</h6>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+
+                  <p>Quote block</p>
+
+                  <p>Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+
+                  <blockquote>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <small class="d-quote-author">Lorem Ipsum</small>
+                  </blockquote>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
+                  </p>
+
+                  <!--  ################### -->
+
+                  <hr />
+
+                  <h2>Lists</h2>
+
+                  <!--  ################### -->
+
+                  <h3>Basic lists</h3>
+
+                  <ul>
+                    <li>Unordered list test</li>
+                    <li>Another list element. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                    <li>Yet another element in the list</li>
+                    <li>Some long text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor
+                      sit amet, consectetur adipisicing elit.
+                    </li>
+                  </ul>
+                  <ol>
+                    <li>Ordered list test</li>
+                    <li>Another list element</li>
+                    <li>Yet another element in the list</li>
+                  </ol>
+
+                  <!--  ################### -->
+
+                  <h3>Nested lists</h3>
+
+                  <ol>
+                    <li>Ordered list</li>
+                    <li>Here's a nested unordered list
+                      <ul>
+                        <li>Nested Unordered list</li>
+                        <li>Nested ordered list
+                          <ol>
+                            <li>The first</li>
+                            <li>And the second</li>
+                          </ol>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Ordered List item</li>
+                    <li>Nested Ordered list
+                      <ol>
+                        <li>Some point</li>
+                        <li>Nested Unordered list
+                          <ul>
+                            <li>The first</li>
+                            <li>And the second</li>
+                          </ul>
+                        </li>
+                      </ol>
+                    </li>
+                  </ol>
+
+                  <!--  ################### -->
+                  <h3>Definition list</h3>
+
+                  <dl>
+                    <dt>definition list dt</dt>
+                    <dd>definition list dd</dd>
+                    <dt>definition list dt</dt>
+                    <dd>definition list dd</dd>
+                    <dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit adipisicing elit</dt>
+                    <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit adipisicing elit</dd>
+                    <dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit adipisicing elit</dt>
+                    <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit adipisicing elit</dd>
+                  </dl>
+
+                  <!--  ################### -->
+
+                  <hr />
+
+                  <h2>Headings</h2>
+
+                  <!--  ################### -->
+
+                  <h1>H1: Lorem ipsum dolor sit amet</h1>
+                  <h2>H2: Lorem ipsum dolor sit amet, consectetur elit</h2>
+                  <h3>H3: Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                  <h4>H4: Lorem ipsum dolor sit amet, consectetur adipisicing elit adipis</h4>
+                  <h5>H5: Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit adipisicing elit</h5>
+                  <h6>H6: Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit adipisicing elit</h6>
+
+                  <!--  ################### -->
+
+                  <p>&nbsp;</p>
+
+                  <h1>Heading 1</h1>
+                  <hr/>
+                  <h2>Heading 2</h2>
+                  <hr/>
+                  <h3>Heading 3</h3>
+                  <hr/>
+                  <h4>Heading 4</h4>
+                  <hr/>
+                  <h5>Heading 5</h5>
+                  <hr/>
+                  <h6>Heading 6</h6>
+
+                  <!--  ################### -->
+
+                  <p>&nbsp;</p>
+
+                  <h1>Heading 1</h1>
+                  <h2>Heading 2</h2>
+                  <h3>Heading 3</h3>
+                  <h4>Heading 4</h4>
+                  <h5>Heading 5</h5>
+                  <h6>Heading 6</h6>
+
+                  <p>&nbsp;</p>
+
+                  <!--  ################### -->
+
+                  <hr />
+
+                  <h2>Misc elements</h2>
+
+                  <!--  ################### -->
+
+                  <p>
+                    <strong>&lt;strong&gt;</strong> <br />
+                    <del>&lt;del&gt; deleted</del> <br />
+                    <dfn>&lt;dfn&gt; dfn</dfn> <br />
+                    <em>&lt;em&gt; emphasis</em>
+                  </p>
+                  <p>
+                    <a>&lt;a&gt; anchor</a> <br />
+                    <a href="http://www.google.com">&lt;a&gt; a + href</a>
+                  </p>
+
+                  <p>
+                    <abbr title="extended abbr text should show when mouse over">&lt;abbr&gt; abbr - extended text
+                    when mouseover.</abbr> <br />
+                    <acronym title="extended acronym text should show when mouse over">&lt;acronym&gt;
+                    acronym - extended text when mouseover.</acronym>
+                  </p>
+                  <address>&lt;address&gt; <br> Donald Duck <br> Box 555 <br> Disneyland</address>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore dolore.
+                  </p>
+
+                  <table summary="This is the summary text for this table." border="0" cellspacing="0" cellpadding="0">
+                    <caption><em>A standard test table with a caption, tr, td elements</em></caption>
+                    <tbody>
+                    <tr>
+                      <th class="span-4">Table Header One</th>
+                      <th class="span-4 last">Table Header Two</th>
+                    </tr>
+                    <tr>
+                      <td>TD One</td>
+                      <td>TD Two</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">TD colspan 2</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <table summary="This is the summary text for this table." border="0" cellspacing="0" cellpadding="0">
+                    <caption><em>A test table with a thead, tfoot, and tbody elements</em></caption>
+                    <thead>
+                    <tr>
+                      <th class="span-4">Table Header One</th>
+                      <th class="span-4 last">Table Header Two</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                      <td colspan="2">tfoot footer</td>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                      <td>TD One</td>
+                      <td>TD Two</td>
+                    </tr>
+                    <tr>
+                      <td>TD One</td>
+                      <td>TD Two</td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr>
+                      <td>TD One</td>
+                      <td>TD Two</td>
+                    </tr>
+                    <tr>
+                      <td>TD One</td>
+                      <td>TD Two</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                  <p>
+                    Code, blocks of or just snippets inline, can be displayed with style just
+                    by wrapping in the right tag. For blocks of code spanning multiple lines, use the
+                    <code>&lt;pre&gt;</code> element. For inline code, use the <code>&lt;code&gt;</code> element.
+                  </p>
+                  <pre>&lt;div&gt;
+    &lt;h1&gt;Heading&lt;/h1&gt;
+    &lt;p&gt;Something right here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="field field-name-field-gallery field-type-image field-label-above content-gallery">
+              <div class="field-label d-hidden">Gallery:&nbsp;</div>
+              <ul class="field-items content-gallery__ul">
+                <li class="field-item content-gallery__item even">
+                  <a href="images/3945eb5.jpg" title="Image 1" class="colorbox init-colorbox-processed cboxElement" rel="gallery-field_gallery"><img src="http://drupal-en.seenta.ru/sites/default/files/styles/field_gallery_preview/public/field_gallery/4/3945eb5.jpg?itok=TU3iK7aA" width="150" height="150" alt="Test page" title="Image 1"></a>
+                </li>
+                <li class="field-item content-gallery__item odd">
+                  <a href="images/abstract0033.jpg" title="Image 2" class="colorbox init-colorbox-processed cboxElement" rel="gallery-field_gallery"><img src="http://drupal-en.seenta.ru/sites/default/files/styles/field_gallery_preview/public/field_gallery/4/abstract0033.jpg?itok=RMVZucvv" width="150" height="150" alt="Test page" title="Image 2"></a>
+                </li>
+                <li class="field-item content-gallery__item even">
+                  <a href="images/abstract0085.jpg" title="Image 3" class="colorbox init-colorbox-processed cboxElement" rel="gallery-field_gallery"><img src="http://drupal-en.seenta.ru/sites/default/files/styles/field_gallery_preview/public/field_gallery/4/abstract0085.jpg?itok=Red81IhC" width="150" height="150" alt="Test page" title="Image 3"></a>
+                </li>
+                <li class="field-item content-gallery__item odd">
+                  <a href="images/wall4you003.jpg" title="Image 4" class="colorbox init-colorbox-processed cboxElement" rel="gallery-field_gallery"><img src="http://drupal-en.seenta.ru/sites/default/files/styles/field_gallery_preview/public/field_gallery/4/wall4you003.jpg?itok=FzGGXs2M" width="150" height="150" alt="Test page" title="Image 4"></a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="field field-name-field-downloads field-type-file field-label-above">
+              <div class="field-label" style="font-weight: bold;">Downloads:&nbsp;</div>
+              <div class="field-items">
+                <div class="field-item even">
+                  <table class="content-downloads">
+                    <tbody>
+                    <tr class="odd">
+                      <td class="content-downloads__filename">
+                        <span class="file file_ext_jpg file_type_image-jpeg"><a href="images/3945eb5.jpg" type="image/jpeg; length=470484" title="3945eb5.jpg">Example
+                          image</a></span></td>
+                      <td class="content-downloads__filesize">459.46 KB</td>
+                    </tr>
+                    <tr class="even">
+                      <td class="content-downloads__filename"><span class="file file_ext_zip file_type_application-zip"><a href="http://drupal-en.seenta.ru/sites/default/files/field_downloads/4/3945eb5.zip" type="application/zip; length=470642" title="3945eb5.zip">Example
+                        archive</a></span></td>
+                      <td class="content-downloads__filesize">459.61 KB</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<footer class="page__footer page-footer">
+  <div class="page-footer__inner d-container">
+    <div class="block search-block">
+      <div class="block__content">
+        <form action="/?test=search" method="get" accept-charset="UTF-8" class="search-block-form d-form-inline">
+          <div class="d-form-group">
+            <input type="text" name="text" value="" size="30" maxlength="128" class="d-form-control search-block__input" placeholder="Search" />
+          </div>
+          <div class="d-form-group">
+            <input type="submit" name="" value="Search" class="search-block__submit" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="block seenta">
+      <div class="block__content">
+        <p>Developed by <a href="http://seenta.ru/" target="_blank" rel="nofollow">...</a></p>
+      </div>
+    </div>
+  </div>
+</footer>

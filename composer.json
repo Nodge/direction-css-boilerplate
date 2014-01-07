@@ -1,0 +1,7 @@
+{
+    "name": "nodge/html-base-5",
+    "minimum-stability": "dev",
+    "require": {
+		"oyejorge/less.php": "*"
+    }
+}

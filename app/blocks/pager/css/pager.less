@@ -1,0 +1,71 @@
+
+.pager {
+	margin: (@line-height-computed / 2) 0;
+
+	&__ul {
+		.d-clearfix();
+	}
+
+	&__item {
+		float: left;
+		margin-left: 4px;
+		font-size: 12px;
+		font-weight: bold;
+		font-family: Arial;
+		line-height: 23px;
+		text-shadow: 0 1px 0 #fff;
+		text-align: center;
+		border: 1px solid #bdbdbd;
+		.box-shadow(inset 0 1px 1px 0 #fff);
+		#d-gradient > .vertical(#f9f9f9, #e9e9e9);
+		border-radius: 2px;
+
+		&:hover {
+			background: #fff;
+		}
+
+		&:first-child,
+		&.first {
+			margin-left: 0;
+		}
+
+		a {
+			display: block;
+//			width: 24px;
+			min-width: 14px;
+			height: 23px;
+			padding: 0 5px;
+			.d-link-static-color(#717171);
+			text-decoration: none;
+		}
+
+		&_first a {
+			padding: 0 10px;
+		}
+
+		&_last a {
+			padding: 0 10px;
+		}
+
+		&_current {
+			&, &:hover {
+				min-width: 14px;
+				height: 23px;
+				padding: 0 5px;
+				color: #fff;
+				text-shadow: 0 1px 0 rgba(0,0,0,0.13);
+				.box-shadow(inset 0 1px 5px 0 rgba(0,0,0,0.4));
+				#d-gradient > .vertical(#a9a9a9, #a1a1a1);
+			}
+		}
+
+		&_ellipsis {
+			width: 34px;
+			margin: 0;
+			color: #717171;
+			border: 0;
+			background: none;
+			.box-shadow(none);
+		}
+	}
+}
