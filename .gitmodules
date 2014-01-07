@@ -1,0 +1,3 @@
+[submodule "app/components/jquery.bem"]
+	path = app/components/jquery.bem
+	url = https://github.com/ethernet1/bem.git
