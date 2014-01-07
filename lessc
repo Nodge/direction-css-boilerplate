@@ -1,4 +1,0 @@
-#!/bin/sh
-lessc --no-js --relative-urls --strict-math=on --rootpath=app/main/css/ app/main/css/style.less compiled.css
-
-# --compress

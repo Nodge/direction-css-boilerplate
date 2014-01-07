@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="ru" class="no-js">
+<html dir="ltr" lang="en" class="no-js">
 <head>
   <!-- Base url for all relative links -->
   <!--<base href="/" />-->
