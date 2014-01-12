@@ -46,7 +46,8 @@
   
   <!-- for IE6-8 support of HTML elements -->
   <!--[if lt IE 9]>
-    <script type="text/javascript" src="framework/js/html5.js"></script>
+	<script type="text/javascript" src="framework/js/html5shiv.js"></script>
+	<script type="text/javascript" src="framework/js/html5shiv-printshiv.js"></script>
   <![endif]-->
   
   <!-- Suppress IE6's pop-up-on-mouseover toolbar for images, that can interfere with certain designs. -->

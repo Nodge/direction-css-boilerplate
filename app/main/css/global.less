@@ -4,8 +4,8 @@ html {
 }
 
 .d-container {
-	min-width: 960px;
-	max-width: 1200px;
+	min-width: @site-min-width;
+	max-width: @site-max-width;
 }
 
 // web fonts as default font
@@ -51,4 +51,7 @@ body {
 	}
 }
 
+.d-clearfix {
+	.d-clearfix();
+}
 

@@ -4,66 +4,68 @@
 // CSS Utils
 @import "../../../framework/css/utils/reset";
 
+// Layout
+@import "../../../framework/css/layout/grid";
+//@import "../../../framework/css/layout/responsive";
+
 // Typography base
 @import "../../../framework/css/typography/base";
 @import "../../../framework/css/typography/tables";
-//@import "../../../framework/css/typography/text-block";
 @import "../../../framework/css/typography/classes";
 
 // Typography everywhere
 @import "../../../framework/css/typography/lists";
 @import "../../../framework/css/typography/misc";
 @import "../../../framework/css/typography/code";
+@import "../../../framework/css/typography/content";
 
 // Typography in a text blocks
 //.d-text {
 //	@import "../../../framework/css/typography/lists";
 //	@import "../../../framework/css/typography/misc";
 //	@import "../../../framework/css/typography/code";
+//	@import "../../../framework/css/typography/content";
 //}
 
-// Layout
-@import "../../../framework/css/layout/base";
-
-// 12 column grid system and page structure
-//@import "../../../framework/css/layout/12-column/grid";
-
-// 16 column grid system and page structure
-@import "../../../framework/css/layout/16-column/grid";
-
 // Forms
-@import "../../../framework/css/forms/base";
-@import "../../../framework/css/forms/checkboxes";
-@import "../../../framework/css/forms/focus-state";
-@import "../../../framework/css/forms/input-sizes";
-@import "../../../framework/css/forms/disabled-state";
-@import "../../../framework/css/forms/feedback-states";
-@import "../../../framework/css/forms/form-actions";
-@import "../../../framework/css/forms/help-text";
-@import "../../../framework/css/forms/input-groups";
-@import "../../../framework/css/forms/form-aligment";
+@import "../../../framework/css/forms/normalize";
+//@import "../../../framework/css/forms/elements";
+@import "../../../framework/css/forms/classes";
+@import "../../../framework/css/forms/layouts";
 @import "../../../framework/css/forms/buttons";
-@import "../../../framework/css/forms/button-groups";
+@import "../../../framework/css/forms/buttons-variants";
 
-// Base components
-//@import "../../../framework/jquery-placeholder/css/placehodler";
-//@import "../../../framework/loaders/css/loaders";
-//@import "@{baseAppPath}/drupal/css/tabs";
-//@import "@{baseAppPath}/drupal/css/action-links";
-//@import "@{baseAppPath}/drupal/css/forms";
 
 // -------------------
 
+
 // components
-@import "../../components/webfonts/css/webfonts";
+//@import "../../components/webfonts/css/webfonts"; // moved to includes.less
+
+// tinymce override
+body, td, pre {
+	margin: 8px;
+	color: @text-color;
+	font-family: @font-family-base;
+	font-size: @font-size-base;
+}
 
 // global styles
 @import "global";
 
 body {
-	.d-text();
-//	background: #fff;
+	.d-text(); // import styles from global.less > .d-text
+	padding: 10px 15px;
 }
 
+// general blocks
+//@import "../../blocks/file/css/file";
+
+// block parts
+//@import "../../blocks/button/css/button";
+
 // content blocks
-//@import "@{app-path}/blocks/table/css/table";
+//@import "../../blocks/main-menu/css/main-menu";
+
+// pages
+//@import "../../pages/page-front/css/page-front";

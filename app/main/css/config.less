@@ -53,7 +53,7 @@
 @line-height-base:			1.428571429; // 20/14
 @line-height-computed:		floor((@font-size-base * @line-height-base)); // ~20px
 
-@headings-font-family:		@font-family-base;
+@headings-font-family:		inherit;
 @headings-font-weight:		500;
 @headings-line-height:		1.1;
 @headings-color:			inherit;
@@ -129,9 +129,9 @@
 @state-warning-bg:          #fcf8e3;
 @state-warning-border:      darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:         #b94a48;
-@state-danger-bg:           #f2dede;
-@state-danger-border:       darken(spin(@state-danger-bg, -10), 5%);
+@state-error-text:         #b94a48;
+@state-error-bg:           #f2dede;
+@state-error-border:       darken(spin(@state-error-bg, -10), 5%);
 
 
 // Buttons
