@@ -6,9 +6,9 @@ if (isset($_GET['file']) && preg_match('#\.less$#i', $_GET['file'])) {
 	$root = dirname(__FILE__);
 	$path = $root.$_GET['file'];
 	if (file_exists($path)) {
-		$parserEnv = new Less_Environment();
-		$parserEnv->strictMath = true;
-		$parser = new Less_Parser($parserEnv);
+		$parser = new Less_Parser(array(
+			'strictMath' => true,
+		));
 		$parser->parseFile($path, 'app/main/css/');
 		$css = $parser->getCss();
 

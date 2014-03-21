@@ -1,7 +1,7 @@
 {
-    "name": "nodge/html-base-5",
+    "name": "nodge/direction-css",
     "minimum-stability": "dev",
     "require": {
-		"oyejorge/less.php": "*"
+		"oyejorge/less.php": "~1.7"
     }
 }
