@@ -106,8 +106,8 @@
   
   
   <!-- Stylesheets -->
-  <link type="text/css" rel="stylesheet" href="getless.php?file=/app/main/css/style.less" media="all" />
-<!--  <link type="text/css" rel="stylesheet" href="app/compiled.css" media="all" />-->
+<!--  <link type="text/css" rel="stylesheet" href="getless.php?file=/app/main/css/style.less" media="all" />-->
+  <link type="text/css" rel="stylesheet" href="app/compiled.css" media="all" />
 
   
   <!-- Javascript libraries -->

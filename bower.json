@@ -1,0 +1,17 @@
+{
+  "name": "direction-css-boilerplate",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Nodge/direction-css-boilerplate",
+  "description": "Direction CSS Framework Boilerplate",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "direction-css": "~1.0.0"
+  }
+}

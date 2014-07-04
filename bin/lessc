@@ -1,4 +1,7 @@
 #!/bin/sh
 lessc --no-js --relative-urls --strict-math=on --rootpath=app/main/css/ ../app/main/css/style.less ../app/compiled.css
 
+
 # --compress
+
+# lessc --no-js --relative-urls --strict-math=on --rootpath=app/main/css/ app/main/css/-prefixes.less > -prefixes.css
