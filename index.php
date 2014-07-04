@@ -46,8 +46,8 @@
   
   <!-- for IE6-8 support of HTML elements -->
   <!--[if lt IE 9]>
-	<script type="text/javascript" src="framework/js/html5shiv.js"></script>
-	<script type="text/javascript" src="framework/js/html5shiv-printshiv.js"></script>
+	<script type="text/javascript" src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
+	<script type="text/javascript" src="bower_components/html5shiv/dist/html5shiv-printshiv.min.js"></script>
   <![endif]-->
   
   <!-- Suppress IE6's pop-up-on-mouseover toolbar for images, that can interfere with certain designs. -->
@@ -114,7 +114,7 @@
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <!--<script type="text/javascript">window.jQuery || document.write('<script src="app/components/bower_components/jquery/jquery.min.js"><\/script>')</script>-->
   
-<!--  <script type="text/javascript" src="framework/js/browser.js"></script>-->
+<!--  <script type="text/javascript" src="bower_components/direction-css/js/browser.js"></script>-->
 <!--  <script type="text/javascript" src="app/components/bower_components/jquery/jquery.min.js"></script>-->
   <script type="text/javascript" src="app/components/webfonts/js/webfonts.config.js"></script>
   <script type="text/javascript" src="app/components/webfonts/js/webfonts.js"></script>
