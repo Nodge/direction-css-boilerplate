@@ -9,15 +9,39 @@ module.exports = function(grunt, config) {
 			files: [
 				src + '/templates/**/*.hbs',
 				src + '/templates/data/**/*.json',
-				'{.tmp,' + src + '}/app/**/*.css',
-				'{.tmp,' + src + '}/app/**/*.js',
 				src + '/app/**/*.{png,jpg,jpeg,gif,webp,svg}',
 				'page-list.json',
 				'assets-config.json',
 				'build-options.json',
 				src + '/README.md'
 			],
-			tasks: ['assemble']
+			tasks: [
+				'assemble',
+				'autoprefixer',
+				'autopolyfiller'
+			]
+		},
+		css: {
+			options: {
+				livereload: config.options.server.livereload_port
+			},
+			files: [
+				'{.tmp,' + src + '}/app/**/*.css'
+			],
+			tasks: [
+				'autoprefixer'
+			]
+		},
+		js: {
+			options: {
+				livereload: config.options.server.livereload_port
+			},
+			files: [
+				'{.tmp,' + src + '}/app/**/*.js'
+			],
+			tasks: [
+				'autopolyfiller'
+			]
 		},
 		less: {
 			options: {
@@ -26,7 +50,9 @@ module.exports = function(grunt, config) {
 			files: [
 				src + '/app/**/*.{css,less}'
 			],
-			tasks: ['less']
+			tasks: [
+				'less'
+			]
 		}
 	};
 };

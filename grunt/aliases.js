@@ -6,6 +6,7 @@ module.exports = function(grunt, config) {
 			'assemble',
 			'less',
 			'autoprefixer',
+			'autopolyfiller',
 			'useminPrepare:release',
 			'cssRebase:release',
 			'imagemin:release',
@@ -36,6 +37,7 @@ module.exports = function(grunt, config) {
 			'assemble',
 			'less',
 			'autoprefixer',
+			'autopolyfiller',
 			'useminPrepare:preview',
 			'cssRebase:preview',
 			'imagemin:preview',
@@ -70,6 +72,8 @@ module.exports = function(grunt, config) {
 					'clean:server',
 					'assemble',
 					'less',
+					'autoprefixer',
+					'autopolyfiller',
 					'connect:livereload',
 					'watch'
 				]);

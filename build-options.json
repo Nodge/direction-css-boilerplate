@@ -21,5 +21,10 @@
 		"Opera 12.1",
 		"android 4.0",
 		"ios 6"
-	]
+	],
+	"polyfills": {
+		"include": [],
+		"exclude": [],
+		"vendor": true
+	}
 }

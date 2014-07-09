@@ -19,10 +19,18 @@ module.exports = function(grunt) {
 	grunt.util._.each(assets, function(packages, type) {
 		grunt.util._.each(packages, function(files, packageName) {
 			assets[type][packageName] = files.map(function(file) {
-				return paths.src + '/' + file;
+				if (grunt.file.exists(paths.src + '/' + file)) {
+					return paths.src + '/' + file;
+				}
+				if (!file.match(/^(\w+:)?\/\//i)) {
+					return '.tmp/' + file;
+				}
+				return file;
 			});
 		});
 	});
+
+	console.log(assets);
 
 	// transform script assets
 	if (!options.vendor_external) {

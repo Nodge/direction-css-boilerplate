@@ -26,7 +26,8 @@
     "grunt-usemin": "~2.1.1",
     "load-grunt-tasks": "~0.5.0",
     "prettify": "~0.1.7",
-    "time-grunt": "~0.3.1"
+    "time-grunt": "~0.3.1",
+    "grunt-autopolyfiller": "~1.1.0"
   },
   "engines": {
     "node": ">=0.10.28"

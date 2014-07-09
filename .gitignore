@@ -3,6 +3,8 @@ build
 .tmp
 .sass-cache
 src/app/components/bower_components
+src/*.html
+
 # ide
 .idea
 
