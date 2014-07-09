@@ -1,19 +1,11 @@
 
-# Documentation for the "detimag" project
+# Documentation for the "direction-css-boilerplate" project
 
 ---
 
 ## Project notes
 
-### VK.com share button
-
-To enable VK.com share button the following should be done:
-1. Register your App at [here](https://vk.com/dev)
-2. Copy your App ID and put the following in `<head>`:
-```
-<script>window.vkAppId = [AppId];</script>
-```
-where `[AppId]` is your App ID.
+TBD
 
 
 ---
@@ -28,13 +20,11 @@ project root
 - css [all of project stylesheets]
 - images [images required for stylesheets only]
 - js [all project scripts]
-- tmp [temporary files: content images, downloads, etc]
+- res [resources files: content images, downloads, etc]
 - *.html
 - favicon.ico
 - README.md
 ```
-
-Note: you can delete `tmp` directory after development.
 
 ### CSS
 
@@ -77,10 +67,6 @@ All project scripts have 3 files:
 * [jQuery](http://jquery.com/) - this project contains v1.11.0, but should also works with v1.8+
 * [jQuery UI](http://jqueryui.com/) - full bundle
 * [Web Font Loader](https://github.com/typekit/webfontloader)
-* [jQuery Colorbox](https://github.com/jackmoore/colorbox)
-* [jQuery Flexslider](https://github.com/woothemes/flexslider)
-* [eazyzoom](https://github.com/i-like-robots/EasyZoom)
-* [socialite](http://socialitejs.com/)
 
 ### CSS
 
@@ -88,9 +74,6 @@ All project scripts have 3 files:
 * [Direction CSS framework](https://github.com/Nodge/direction-css)
 * `jquery.ui.core.css` from [jQuery UI](http://jqueryui.com/) styles
 * `jquery.ui.dialog.css` from [jQuery UI](http://jqueryui.com/) styles
-* `colorbox.css` for [jQuery Colorbox](https://github.com/jackmoore/colorbox) plugin
-* `easyzoom.css` for [eazyzoom](https://github.com/i-like-robots/EasyZoom) plugin
-
 
 ---
 
@@ -117,18 +100,6 @@ You can easily add tooltip to any element. Just use `data-tooltip` attribute lik
 ```
 <span data-tooltip="Tooltip text">any text on content</span>
 ```
-
-### Numeric input with plus/minus controls
-
-To use this widget you should add `app-numeric` class to text field like so:
-```
-<input type="text" value="1" class="app-numeric" data-min="1" data-max="5" data-step="1" />
-```
-
-This widget is configurable through data attributes:
-* `data-min` - min possible value
-* `data-max` - max possible value
-* `data-step` - step for controls
 
 ### Styled dropdown list
 
@@ -211,8 +182,4 @@ Example of styled text:
 
 ## Author
 
-Developed by: Maxim Zemskov
-
-Email: nodge@yandex.ru
-
-Url: [nodge.ru](http://nodge.ru/)
+Developed by Maxim Zemskov, [nodge.ru](http://nodge.ru/)
