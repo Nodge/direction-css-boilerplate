@@ -1,8 +1,8 @@
-vendor
-composer.lock
-app/components/bower_components
-app/compiled.css
-
+node_modules
+build
+.tmp
+.sass-cache
+src/app/components/bower_components
 # ide
 .idea
 

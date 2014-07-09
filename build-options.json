@@ -1,0 +1,25 @@
+{
+	"chrome_frame": false,
+	"html5shiv": true,
+	"vendor_src": false,
+	"script_src": false,
+	"vendor_external": true,
+	"css_no_base64": false,
+	"custom_assets": false,
+	"server": {
+		"addr": "0.0.0.0",
+		"port": 9000,
+		"livereload_port": 35729
+	},
+	"browsers": [
+		"last 2 version",
+		"Firefox ESR",
+		"ie 8",
+		"ie 9",
+		"ie 10",
+		"ie 11",
+		"Opera 12.1",
+		"android 4.0",
+		"ios 6"
+	]
+}

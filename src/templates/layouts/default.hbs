@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--[if lte IE 7]> <html lang="en" class="lt-ie8 no-js"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <!-- Base url for all relative links -->
+    <!--<base href="/" />-->
+
+    <!-- Content charset -->
+    <meta charset="utf-8"/>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+
+    <!-- Common meta tags -->
+    <!--
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="index,follow" />
+    -->
+
+    <!-- Viewport settings for touch devices (mobile, tablets, etc) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Mobile IE -->
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+
+    <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+    <!--[if IEMobile]>
+    <meta http-equiv="cleartype" content="on" />
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
+    <!--
+    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png" />
+    -->
+
+    {{#if build-options.chrome_frame }}<!-- Enable Chrome Frame for IE6-7 users -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--[if lte IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+    <![endif]-->
+
+    {{/if}}
+    {{#and assets-config.js.html5shiv_vendor build-options.html5shiv }}<!-- for IE8 support of HTML elements -->
+    <!-- build:js js/vendor-html5shiv.min.js -->
+    <!--[if lt IE 9]>
+    {{#each assets-config.js.html5shiv_vendor}}<script src="{{this}}"></script>
+    {{/each}}<![endif]-->
+    <!-- endbuild -->
+
+
+    {{/and}}{{#indent 4}}{{#prettify}}
+	<!-- Stylesheets -->
+    <!-- build:css({.tmp,src}) css/style.min.css -->
+    <link type="text/css" rel="stylesheet" href="app/main/css/style.css" media="all" />
+    <!-- endbuild -->
+	{{#if build-options.custom_assets}}
+    	<!-- build:css({.tmp,src}) css/custom-style.css -->
+    	<link type="text/css" rel="stylesheet" href="app/main/css/custom-style.css" media="all" />
+    	<!-- endbuild -->
+	{{/if}}
+	{{/prettify}}{{/indent}}
+
+    <!-- Javascript: head-->
+    {{#indent 4}}{{#prettify}}
+
+    {{#each assets-config.js.head_external}}
+		<script src="{{this}}"></script>
+    {{/each}}
+
+	{{#if build-options.vendor_external }}
+		{{#if assets-config.js.head_vendor }}
+			<!-- build:js js/head-vendor.min.js -->
+			{{#each assets-config.js.head_vendor}}
+				<script src="{{this}}"></script>
+			{{/each}}
+			<!-- endbuild -->
+		{{/if}}
+	{{/if}}
+
+	{{#if assets-config.js.head }}
+		<!-- build:js js/head.min.js -->
+		{{#unless build-options.vendor_external }}
+			{{#each assets-config.js.head_vendor}}
+				<script src="{{this}}"></script>
+			{{/each}}
+		{{/unless }}
+
+		{{#each assets-config.js.head}}
+			<script src="{{this}}"></script>
+		{{/each}}
+		<!-- endbuild -->
+	{{/if}}
+
+	{{/prettify}}{{/indent}}
+
+    <title>{{#if title}}{{title}} / {{/if}}Интернет-магазин детских товаров</title>
+</head>
+{{#prettify}}
+<body class="page page-id-{{ pageId }}">
+	<div class="page__container">
+	    {{> header }}
+
+        <div class="page__main-container d-container">
+            <div class="d-row">
+				{{#if sidebar-left}}
+					{{add grid-cols -5}}
+				{{/if}}
+				{{#if sidebar-right}}
+					{{add grid-cols -5}}
+				{{/if}}
+
+				{{#if sidebar-left}}
+				<!-- block: sidebar-left -->
+                <aside class="page__sidebar page__sidebar_left d-col-5">
+					{{#inArray sidebar-right "test-sidebar"}}
+						{{> test-sidebar }}
+					{{/inArray}}
+                </aside>
+                <!-- /block: sidebar-left -->
+				{{/if}}
+
+				<section class="page__content-container d-col-{{#if sidebar-left}}{{#if sidebar-right}}14{{else}}19{{/if}}{{else}}24{{/if}}">
+                    <a id="main-content"></a>
+                    <div class="page__content">
+                        <!-- page content: {{pageId}} -->
+						{{> body }}
+                        <!-- /page content: {{pageId}} -->
+                    </div>
+                </section>
+
+				{{#if sidebar-right}}
+                    <!-- block: sidebar-right -->
+                    <aside class="page__sidebar page__sidebar_right d-col-5">
+						{{#inArray sidebar-right "test-sidebar"}}
+							{{> test-sidebar }}
+						{{/inArray}}
+                    </aside>
+                    <!-- /block: sidebar-right -->
+				{{/if}}
+            </div>
+        </div>
+	</div>
+	{{> footer }}
+
+	<!-- block: hidden-area -->
+	<div class="d-hidden">
+
+    </div>
+    <!-- /block: hidden-area -->
+
+	<!-- Javascript: bottom -->
+   	{{#each assets-config.js.bottom_external}}
+		<script src="{{this}}"></script>
+    {{/each}}
+
+    {{#if build-options.vendor_external }}
+		{{#if assets-config.js.bottom_vendor }}
+			<!-- build:js js/bottom-vendor.min.js -->
+    		{{#each assets-config.js.bottom_vendor}}
+				<script src="{{this}}"></script>
+    		{{/each}}
+			<!-- endbuild -->
+		{{/if}}
+	{{/if}}
+
+    {{#if assets-config.js.bottom }}
+		<!-- build:js js/bottom.min.js -->
+		{{#unless build-options.vendor_external }}
+			{{#each assets-config.js.bottom_vendor}}
+                <script src="{{this}}"></script>
+			{{/each}}
+		{{/unless }}
+
+    	{{#each assets-config.js.bottom}}
+			<script src="{{this}}"></script>
+    	{{/each}}
+		<!-- endbuild -->
+	{{/if}}
+
+	{{#if build-options.custom_assets}}
+	<!-- build:js js/custom-script.js -->
+	<script src="app/main/js/custom-script.js"></script>
+    <!-- endbuild -->
+	{{/if}}
+</body>
+{{/prettify}}
+</html>

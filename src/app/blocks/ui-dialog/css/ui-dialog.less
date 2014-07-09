@@ -1,0 +1,77 @@
+
+.ui-dialog {
+	padding: 15px 25px;
+	border: none;
+	border-radius: 5px;
+	.box-shadow(0 3px 5px rgba(35,31,32,.35));
+	background-color: #fff;
+
+	// reset jquery.ui font settings
+	&,
+	.ui-widget {
+		font-size: 1em;
+		font-family: inherit;
+	}
+
+	&-titlebar {
+		&& {
+			position: static;
+			padding: 0;
+			border: none;
+			background: none;
+		}
+
+		& &-close {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			width: 12px;
+			height: 12px;
+			margin: 0;
+			padding: 0;
+			border: none;
+			background: none;
+
+			.ui-icon {
+				width: 12px;
+				height: 12px;
+				margin: 0;
+				background: url(../images/close-icon.png);
+			}
+
+			.ui-button-text {
+				display: none;
+			}
+
+			&:hover {
+				.opacity(0.7);
+			}
+		}
+	}
+
+	&-title {
+		display: block;
+		font-size: 18px;
+		line-height: 1;
+		text-transform: uppercase;
+		color: #000;
+	}
+
+	&-content {
+		&& {
+			padding: 0;
+			border: none;
+			background: none;
+		}
+	}
+
+	&__block {
+		display: none;
+	}
+}
+
+.ui-widget-overlay {
+	background: #000;
+	background: rgba(0,0,0,0.8);
+	.opacity(1);
+}

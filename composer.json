@@ -1,7 +1,0 @@
-{
-    "name": "nodge/direction-css",
-    "minimum-stability": "dev",
-    "require": {
-		"oyejorge/less.php": "~1.7"
-    }
-}

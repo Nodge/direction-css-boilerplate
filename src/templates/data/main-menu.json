@@ -1,0 +1,29 @@
+[
+	{
+		"url": "index.html",
+		"title": "Главная"
+	},
+	{
+		"url": "text.html",
+		"title": "Текстовая страница"
+	},
+	{
+		"url": "readme.html",
+		"title": "Readme"
+	},
+	{
+		"url": "#",
+		"title": "test item",
+		"id": "test-item",
+		"items": [
+			{
+				"url": "#",
+				"title": "subitem 1"
+			},
+			{
+				"url": "#",
+				"title": "subitem 2"
+			}
+		]
+	}
+]

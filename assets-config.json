@@ -1,0 +1,36 @@
+{
+	"js": {
+		"html5shiv_vendor": [
+			"app/components/bower_components/html5shiv/dist/html5shiv.js",
+			"app/components/bower_components/html5shiv/dist/html5shiv-printshiv.js"
+		],
+		"head_external": [
+			"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js",
+			"//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"
+		],
+		"bottom_external": [
+			"//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"
+		],
+		"head_vendor": [
+
+		],
+		"bottom_vendor": [
+
+		],
+		"head": [
+			"app/main/js/script.js",
+			"app/components/webfonts/js/webfonts.config.js"
+		],
+		"bottom": [
+
+		]
+	},
+	"less": {
+		"style": [ "app/main/css/style.less" ],
+		"wysiwyg": [ "app/main/css/wysiwyg.less" ]
+	},
+	"css": {
+		"style": [ "../.tmp/app/main/css/style.css" ],
+		"wysiwyg": [ "../.tmp/app/main/css/wysiwyg.css" ]
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"release": [
+		{
+			"id": "index",
+			"title": "Главная"
+		},
+		{
+			"id": "page-list",
+			"title": "Список страниц"
+		},
+		{
+			"id": "text",
+			"title": "Текстовая страница"
+		},
+		{
+			"id": "readme",
+			"title": "Readme"
+		}
+	],
+	"preview": [
+		"index",
+		"text"
+	]
+}

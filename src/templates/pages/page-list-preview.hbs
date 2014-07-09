@@ -1,0 +1,22 @@
+---
+pageId: page-list-preview
+title: Список страниц для предпросмотра
+---
+
+<div class="block text-block">
+    <div class="block__content">
+		{{> breadcrumb }}
+        <h1 class="page__title">{{title}}</h1>
+        <article class="d-text">
+            <ol>
+				{{#each page-list.release}}
+                    <li>{{#inArray ../page-list.preview id}}
+                        <a href="{{id}}.html">{{title}}</a>
+					{{else}}
+						{{title}} &nbsp; <small>[недоступно для предпросмотра]</small>
+					{{/inArray}}</li>
+				{{/each}}
+            </ol>
+        </article>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+
+.search-block {
+	@width: 220px;
+	@height: 34px;
+	@buttonWidth: 34px;
+
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: @width;
+	height: @height;
+
+	&__input .d-form-control {
+		width: @width;
+		height: @height;
+		margin: 0;
+		padding: 0 (10px + @buttonWidth) 0 10px;
+		line-height: @height;
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		background: #fff;
+		.d-placeholder(#939598);
+	}
+
+	&__submit {
+		position: absolute;
+		top: 1px;
+		right: 1px;
+		width: @buttonWidth;
+		height: (@height - 2px);
+		font-size: 1px;
+		text-indent: -9999em;
+		border: 0;
+		border-radius: 4px;
+		background: #f0f0f0;
+
+		&:hover {
+			background: darken(#f0f0f0, 5%);
+		}
+	}
+}

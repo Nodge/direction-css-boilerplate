@@ -1,0 +1,18 @@
+---
+pageId: page-list
+title: Список страниц
+---
+
+<div class="block text-block">
+	<div class="block__content">
+		{{> breadcrumb }}
+        <h1 class="page__title">{{title}}</h1>
+		<article class="d-text">
+			<ol>
+				{{#each page-list.release}}
+					<li><a href="{{id}}.html">{{title}}</a></li>
+				{{/each}}
+			</ol>
+        </article>
+    </div>
+</div>
