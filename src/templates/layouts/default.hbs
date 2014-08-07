@@ -46,148 +46,117 @@
     <![endif]-->
 
     {{/if}}
-    {{#and assets-config.js.html5shiv_vendor build-options.html5shiv }}<!-- for IE8 support of HTML elements -->
-    <!-- build:js js/html5shiv-vendor.min.js -->
+    {{#and assets-config.js.html5shiv build-options.html5shiv }}<!-- for IE8 support of HTML elements -->
     <!--[if lt IE 9]>
-    {{#each assets-config.js.html5shiv_vendor}}<script src="{{this}}"></script>
+    {{#each assets-config.js.html5shiv}}<script src="{{this}}" data-build="html5shiv"></script>
     {{/each}}<![endif]-->
-    <!-- endbuild -->
 
 
     {{/and}}{{#indent 4}}{{#prettify}}
-	<!-- Stylesheets -->
-    <!-- build:css({.tmp,src}) css/style.min.css -->
-    <link type="text/css" rel="stylesheet" href="app/main/css/style.css" media="all" />
-    <!-- endbuild -->
-	{{#if build-options.custom_assets}}
-    	<!-- build:css({.tmp,src}) css/custom-style.css -->
-    	<link type="text/css" rel="stylesheet" href="app/main/css/custom-style.css" media="all" />
-    	<!-- endbuild -->
-	{{/if}}
-	{{/prettify}}{{/indent}}
+    <!-- Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="app/main/css/style.css" media="all" data-build="style" />
+    <link type="text/css" rel="stylesheet" href="app/custom-style.css" media="all" data-build="custom-style" />
+    {{/prettify}}{{/indent}}
 
     <!-- Javascript: head-->
     {{#indent 4}}{{#prettify}}
 
+    <script data-build="head_external">/* placeholder */</script>
     {{#each assets-config.js.head_external}}
-		<script src="{{this}}"></script>
+        <script src="{{this}}" data-build="head_external"></script>
     {{/each}}
 
-	{{#if build-options.vendor_external }}
-		{{#if assets-config.js.head_vendor }}
-			<!-- build:js js/head-vendor.min.js -->
-			{{#each assets-config.js.head_vendor}}
-				<script src="{{this}}"></script>
-			{{/each}}
-			<!-- endbuild -->
-		{{/if}}
-	{{/if}}
+    <script data-build="head_vendor">/* placeholder */</script>
+    {{#each assets-config.js.head_vendor}}
+        {{#if build-options.vendor_external }}
+            <script src="{{this}}" data-build="head_vendor"></script>
+        {{else}}
+            <script src="{{this}}" data-build="head"></script>
+        {{/if}}
+    {{/each}}
 
-	{{#if assets-config.js.head }}
-		<!-- build:js js/head.min.js -->
-		{{#unless build-options.vendor_external }}
-			{{#each assets-config.js.head_vendor}}
-				<script src="{{this}}"></script>
-			{{/each}}
-		{{/unless }}
+    <script data-build="head">/* placeholder */</script>
+    {{#each assets-config.js.head}}
+        <script src="{{this}}" data-build="head"></script>
+    {{/each}}
 
-		{{#each assets-config.js.head}}
-			<script src="{{this}}"></script>
-		{{/each}}
-		<!-- endbuild -->
-	{{/if}}
-
-	{{/prettify}}{{/indent}}
+    {{/prettify}}{{/indent}}
 
     <title>{{#if title}}{{title}} / {{/if}}Интернет-магазин детских товаров</title>
 </head>
 {{#prettify}}
 <body class="page page-id-{{ pageId }}">
-	<div class="page__container">
-	    {{> header }}
+    <div class="page__container">
+        {{> header }}
 
         <div class="page__main-container d-container">
             <div class="d-row">
-				{{#if sidebar-left}}
-					{{add grid-cols -5}}
-				{{/if}}
-				{{#if sidebar-right}}
-					{{add grid-cols -5}}
-				{{/if}}
+                {{#if sidebar-left}}
+                    {{add grid-cols -5}}
+                {{/if}}
+                {{#if sidebar-right}}
+                    {{add grid-cols -5}}
+                {{/if}}
 
-				{{#if sidebar-left}}
-				<!-- block: sidebar-left -->
+                {{#if sidebar-left}}
+                <!-- block: sidebar-left -->
                 <aside class="page__sidebar page__sidebar_left d-col-5">
-					{{#inArray sidebar-right "test-sidebar"}}
-						{{> test-sidebar }}
-					{{/inArray}}
+                    {{#inArray sidebar-right "test-sidebar"}}
+                        {{> test-sidebar }}
+                    {{/inArray}}
                 </aside>
                 <!-- /block: sidebar-left -->
-				{{/if}}
+                {{/if}}
 
-				<section class="page__content-container d-col-{{#if sidebar-left}}{{#if sidebar-right}}14{{else}}19{{/if}}{{else}}24{{/if}}">
+                <section class="page__content-container d-col-{{#if sidebar-left}}{{#if sidebar-right}}14{{else}}19{{/if}}{{else}}24{{/if}}">
                     <a id="main-content"></a>
                     <div class="page__content">
                         <!-- page content: {{pageId}} -->
-						{{> body }}
+                        {{> body }}
                         <!-- /page content: {{pageId}} -->
                     </div>
                 </section>
 
-				{{#if sidebar-right}}
+                {{#if sidebar-right}}
                     <!-- block: sidebar-right -->
                     <aside class="page__sidebar page__sidebar_right d-col-5">
-						{{#inArray sidebar-right "test-sidebar"}}
-							{{> test-sidebar }}
-						{{/inArray}}
+                        {{#inArray sidebar-right "test-sidebar"}}
+                            {{> test-sidebar }}
+                        {{/inArray}}
                     </aside>
                     <!-- /block: sidebar-right -->
-				{{/if}}
+                {{/if}}
             </div>
         </div>
-	</div>
-	{{> footer }}
+    </div>
+    {{> footer }}
 
-	<!-- block: hidden-area -->
-	<div class="d-hidden">
+    <!-- block: hidden-area -->
+    <div class="d-hidden">
 
     </div>
     <!-- /block: hidden-area -->
 
-	<!-- Javascript: bottom -->
-   	{{#each assets-config.js.bottom_external}}
-		<script src="{{this}}"></script>
+    <!-- Javascript: bottom -->
+    <script data-build="bottom_external">/* placeholder */</script>
+       {{#each assets-config.js.bottom_external}}
+        <script src="{{this}}" data-build="bottom_external"></script>
+    {{/each}}
+    
+    <script data-build="bottom_vendor">/* placeholder */</script>
+    {{#each assets-config.js.bottom_vendor}}
+        {{#if build-options.vendor_external }}
+            <script src="{{this}}" data-build="bottom_vendor"></script>
+        {{else}}
+            <script src="{{this}}" data-build="bottom"></script>
+        {{/if}}
     {{/each}}
 
-    {{#if build-options.vendor_external }}
-		{{#if assets-config.js.bottom_vendor }}
-			<!-- build:js js/bottom-vendor.min.js -->
-    		{{#each assets-config.js.bottom_vendor}}
-				<script src="{{this}}"></script>
-    		{{/each}}
-			<!-- endbuild -->
-		{{/if}}
-	{{/if}}
+    <script data-build="bottom">/* placeholder */</script>
+    {{#each assets-config.js.bottom}}
+        <script src="{{this}}" data-build="bottom"></script>
+    {{/each}}
 
-    {{#if assets-config.js.bottom }}
-		<!-- build:js js/bottom.min.js -->
-		{{#unless build-options.vendor_external }}
-			{{#each assets-config.js.bottom_vendor}}
-                <script src="{{this}}"></script>
-			{{/each}}
-		{{/unless }}
-
-    	{{#each assets-config.js.bottom}}
-			<script src="{{this}}"></script>
-    	{{/each}}
-		<!-- endbuild -->
-	{{/if}}
-
-	{{#if build-options.custom_assets}}
-	<!-- build:js js/custom-script.js -->
-	<script src="app/main/js/custom-script.js"></script>
-    <!-- endbuild -->
-	{{/if}}
-</body>
-{{/prettify}}
+    <script src="app/custom-script.js" data-build="custom-script"></script>
+</body>{{/prettify}}
 </html>

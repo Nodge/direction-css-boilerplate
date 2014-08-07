@@ -1,40 +1,44 @@
 'use strict';
 
-module.exports = function(grunt) {
-	var pkg = grunt.file.readJSON('package.json');
+var fs = require('fs');
+var path = require('path');
+var _ = require('lodash');
+
+module.exports = function() {
+	var pkg = require('./package.json');
 
 	var paths = {
 		src: 'src',
 		resources: 'res',
-		release: 'build/release',
-		preview: 'build/preview'
+		dist: 'dist'
 	};
 
 	// load pages config
-	var pages = grunt.file.readJSON('page-list.json'),
-		options = grunt.file.readJSON('build-options.json');
+	var pages = require('./page-list.json'),
+		options = require('./build-options.json');
 
 	// load scripts config
-	var assets = grunt.file.readJSON('assets-config.json');
-	grunt.util._.each(assets, function(packages, type) {
-		grunt.util._.each(packages, function(files, packageName) {
+	var assets = require('./assets-config.json');
+	_.each(assets, function(packages, type) {
+		_.each(packages, function(files, packageName) {
 			assets[type][packageName] = files.map(function(file) {
-				if (grunt.file.exists(paths.src + '/' + file)) {
-					return paths.src + '/' + file;
+				if (file.match(/^(\w+:)?\/\//i)) {
+					return file;
 				}
-				if (!file.match(/^(\w+:)?\/\//i)) {
-					return '.tmp/' + file;
+				else {
+					file = file.split('/').join(path.sep);
+					if (fs.existsSync(paths.src + '/' + file)) {
+						return paths.src + '/' + file;
+					}
+					return file;
 				}
-				return file;
 			});
 		});
 	});
 
-	console.log(assets);
-
 	// transform script assets
 	if (!options.vendor_external) {
-		grunt.util._.each(assets.js, function(files, packageName) {
+		_.each(assets.js, function(files, packageName) {
 			if (packageName.match(/_vendor$/)) {
 				var name = packageName.replace(/_vendor$/, '');
 				if (assets.js[name]) {
@@ -43,19 +47,23 @@ module.exports = function(grunt) {
 				else {
 					assets.js[name] = files;
 				}
-				delete assets.js[packageName];
+				assets.js[packageName] = [];
 			}
 		});
 	}
 
-	grunt.util._.extend(options, {
+	if (!options.html5shiv) {
+		assets.js.html5shiv = [];
+	}
+
+	_.extend(options, {
 		paths: paths,
 		assets: assets,
 		pages: pages,
 
 		banner: '/*!\n' +
 			' * The "' + pkg.name + '" project v' + pkg.version + '\n' +
-			' * Build date: ' + grunt.template.today("yyyy-mm-dd") + '\n' +
+			' * Build date: ' + (new Date()).toLocaleDateString() + '\n' +
 			' * Author: Maxim Zemskov <nodge@yandex.ru>\n' +
 			' * See README.md for details.\n' +
 			' */\n'

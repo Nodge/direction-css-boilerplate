@@ -1,6 +1,6 @@
 {
 	"js": {
-		"html5shiv_vendor": [
+		"html5shiv": [
 			"app/components/bower_components/html5shiv/dist/html5shiv.js",
 			"app/components/bower_components/html5shiv/dist/html5shiv-printshiv.js"
 		],
@@ -30,7 +30,6 @@
 		"wysiwyg": [ "app/main/css/wysiwyg.less" ]
 	},
 	"css": {
-		"style": [ "../.tmp/app/main/css/style.css" ],
-		"wysiwyg": [ "../.tmp/app/main/css/wysiwyg.css" ]
+
 	}
 }

@@ -1,44 +1,47 @@
 'use strict';
 
-/**
- *
- * @param path
- * @param grunt
- * @param config
- * @returns {{}}
- */
-function loadConfig(path, grunt, config) {
-	var glob = require('glob'),
-		object = {},
-		key;
-
-	glob.sync('*', { cwd: path }).forEach(function(option) {
-		key = option.replace(/\.js$/,'');
-		object[key] = require(path + option)(grunt, config);
-	});
-
-	return object;
-}
-
 module.exports = function(grunt) {
-	// Show elapsed time at the end
-	require('time-grunt')(grunt);
-
-	// Load all grunt tasks
-	require('load-grunt-tasks')(grunt);
-
 	// Manually load grunt tasks
 	grunt.loadNpmTasks('assemble');
-	require('./grunt-css-rebase')(grunt);
-	require('./grunt-image-embed')(grunt);
 
 	// Load config
 	var config = require('./config.js')(grunt);
-	grunt.util._.extend(config, loadConfig('./grunt/', grunt, config));
-	grunt.initConfig(config);
-
-	// Create tasks
-	grunt.util._.each(config.aliases, function(value, key) {
-		grunt.registerTask(key, value);
+	grunt.util._.extend(config, {
+		assemble: {
+			options: {
+				flatten: true,
+				pkg: '<%= pkg %>',
+				layout: 'default.hbs',
+				layoutdir: '<%= options.paths.src %>/templates/layouts',
+				partials: '<%= options.paths.src %>/templates/partials/**/*.hbs',
+				data: [
+					'<%= options.paths.src %>/templates/data/*.json',
+					'./page-list.json',
+					'./assets-config.json',
+					'./build-options.json'
+				],
+				helpers: [
+					'prettify',
+					'./hbs-helpers.js'
+				],
+				prettify: {
+					condense: true,
+					padcomments: false,
+					indent: 4,
+					indent_char: " ",
+					indent_inner_html: true,
+					wrap_line_length: 0
+				},
+				readmeFile: '<%= options.paths.src %>/README.md'
+			},
+			pages: {
+				files: {
+					'<%= options.paths.src %>/': [
+						'<%= options.paths.src %>/templates/pages/*.hbs'
+					]
+				}
+			}
+		}
 	});
+	grunt.initConfig(config);
 };

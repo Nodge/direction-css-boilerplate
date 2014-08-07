@@ -1,15 +1,12 @@
 {
 	"chrome_frame": false,
 	"html5shiv": true,
-	"vendor_src": false,
-	"script_src": false,
 	"vendor_external": true,
-	"css_no_base64": false,
-	"custom_assets": false,
 	"server": {
-		"addr": "0.0.0.0",
+		"host": "0.0.0.0",
 		"port": 9000,
-		"livereload_port": 35729
+		"livereload": false,
+		"fallback": false
 	},
 	"browsers": [
 		"last 2 version",
