@@ -5,13 +5,15 @@ var async = require('async');
 var through = require('through2');
 var rework = require('rework');
 var mkdirp = require('mkdirp');
+var rimraf = require('rimraf');
 var gulp = require('gulp');
 var $p = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var gruntTasks = $p.grunt.tasks();
 var config = require('./config')();
 var pkg = config.pkg;
-var options = config.options;
+var options;
+var originalOptions = config.options;
 
 
 /**
@@ -99,6 +101,19 @@ function sync(next) {
 }
 
 /**
+ * @param fn
+ * @returns {*}
+ */
+function getFile(fn) {
+	return through.obj(function (record, encoding, callback) {
+		fn(record.path);
+		callback();
+	}, function(callback) {
+		callback();
+	});
+}
+
+/**
  * Task functions
  * ----------------------
  */
@@ -106,35 +121,58 @@ function sync(next) {
 /**
  *
  */
-gulp.task('clean', ['cleanTmp'], function() {
-	$p.util.log('[clean] Cleaning up the build files...');
-
-	var files = [
-		options.paths.dist + '/**/*',
-		'!' + options.paths.dist + '/.git*'
-	];
-
-	return gulp.src(files, { read: false, dot: true })
-		.pipe($p.clean())
-		.pipe(sync(function() {
-			$p.util.log('[clean] Done.');
-		}));
+gulp.task('initOptions', function() {
+	options = _.clone(originalOptions, true);
 });
 
 /**
  *
  */
-gulp.task('cleanTmp', function() {
+gulp.task('clean', ['cleanTmp'], function(done) {
+	$p.util.log('[clean] Cleaning up the build files...');
+
+	var files = [];
+
+	gulp.src([
+		options.paths.dist + '/**/*',
+		'!' + options.paths.dist + '/.git*'
+	])
+	.pipe(getFile(function(path) {
+		files.push(path);
+	}))
+	.pipe(sync(function() {
+		files.forEach(function(file) {
+			rimraf.sync(file);
+		});
+
+		$p.util.log('[clean] Done.');
+		done();
+	}));
+});
+
+/**
+ *
+ */
+gulp.task('cleanTmp', function(done) {
 	$p.util.log('[cleanTmp] Cleaning up temporary files...');
 
-	return gulp.src([
-		path.join('.tmp', '**', '*'),
+	var files = [];
+
+	gulp.src([
+		'.tmp',
 		options.paths.src + '/*.html'
-	], { read: false, dot: true })
-		.pipe($p.clean())
-		.pipe(sync(function() {
-			$p.util.log('[cleanTmp] Done.');
-		}));
+	])
+	.pipe(getFile(function(path) {
+		files.push(path);
+	}))
+	.pipe(sync(function() {
+		files.forEach(function(file) {
+			rimraf.sync(file);
+		});
+
+		$p.util.log('[cleanTmp] Done.');
+		done();
+	}));
 });
 
 gulp.task('lint', function() {
@@ -253,8 +291,13 @@ gulp.task('assets', function(done) {
  *
  */
 gulp.task('resources', function() {
-	return gulp.src(path.join(options.paths.src, options.paths.resources, '**', '*'), { dot: true })
-		.pipe(gulp.dest(path.join(options.paths.dist, options.paths.resources)));
+	return gulp.src([
+		path.join(options.paths.src, options.paths.resources, '**', '*')
+	], {
+		base: options.paths.src,
+		dot: true
+	})
+		.pipe(gulp.dest(options.paths.dist));
 });
 
 /**
@@ -473,8 +516,12 @@ gulp.task('html', function() {
 				_.each(options.assets[type], function(files, packageName) {
 					var $links = $('[data-build="' + packageName + '"]');
 					files.forEach(function(file, i) {
-						var url = path.relative(path.resolve(options.paths.dist), file);
-						url = url.split(path.sep).join('/');
+						var url = file;
+
+						if (!file.match(/^(https?:)?\/\//i)) {
+							url = path.relative(path.resolve(options.paths.dist), file);
+							url = url.split(path.sep).join('/');
+						}
 
 						var tag;
 
@@ -540,7 +587,7 @@ gulp.task('custom-scripts', function(done) {
 					next();
 				}));
 		}
-	]
+	];
 
 	async.eachSeries(steps, function(fn, next) {
 		fn(next);
@@ -611,7 +658,7 @@ gulp.task('autopolyfiller', function() {
 	var targetFile = '.tmp/polyfills.js';
 
 	// create empty polyfills file
-	fs.writeFileSync(targetFile, '"".trim();', { encoding: 'utf8' });
+	fs.writeFileSync(targetFile, '', { encoding: 'utf8' });
 
 	var files = [ targetFile ];
 
@@ -627,6 +674,7 @@ gulp.task('autopolyfiller', function() {
 		}))
 		.pipe(gulp.dest(path.dirname(targetFile)))
 		.pipe(sync(function() {
+			// todo: lookup for polyfills file in assets config
 			if (options.vendor_external) {
 				options.assets.js.head_vendor.unshift(targetFile);
 			}
@@ -718,7 +766,7 @@ gulp.task('serveProcessJs', ['autopolyfiller'], function(done) {
 /**
  *
  */
-gulp.task('build', function(done) {
+gulp.task('build', ['initOptions'], function(done) {
 	runSequence(
 		'lint',
 		'clean',
@@ -742,6 +790,7 @@ gulp.task('build', function(done) {
  *
  */
 gulp.task('serve', [
+	'initOptions',
 /*
 	'autoprefixer',
 	'autopolyfiller',
@@ -757,12 +806,15 @@ gulp.task('serve', [
 			gulp.watch(path.join(options.paths.src, '**', '*.{css,less}'), ['serveProcessCss']);
 			gulp.watch(path.join(options.paths.src, '**', '*.js'), ['serveProcessJs']);
 			gulp.watch(path.join(options.paths.src, '**', '*.hbs'), ['assemble']);
+			gulp.watch('./assets-config.json', ['serveProcessCss', 'serveProcessJs', 'assemble']);
+			gulp.watch('./build-options.json', ['serveProcessCss', 'serveProcessJs', 'assemble']);
+			gulp.watch('./page-list.json', ['assemble']);
 
 			gulp.src([
-					'.tmp',
-					options.paths.src
-				])
-				.pipe($p.webserver(options.server));
+				'.tmp',
+				options.paths.src
+			])
+			.pipe($p.webserver(options.server));
 		}
 	);
 });
@@ -773,6 +825,26 @@ gulp.task('serve', [
 gulp.task('serve-dist', function() {
 	gulp.src([options.paths.dist])
 		.pipe($p.webserver(options.server));
+});
+
+/**
+ *
+ */
+gulp.task('watch', function() {
+	runSequence(
+		'build',
+
+		function() {
+			gulp.watch([
+				path.join(options.paths.src, '**', '*.{css,less}'),
+				path.join(options.paths.src, '**', '*.js'),
+				path.join(options.paths.src, '**', '*.hbs'),
+				'./assets-config.json',
+				'./build-options.json',
+				'./page-list.json',
+			], ['build']);
+		}
+	);
 });
 
 /**
