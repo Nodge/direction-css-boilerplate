@@ -41,6 +41,7 @@ function assets(options) {
 		srcDir: './',
 		targetDir: './',
 		assetsDir: './',
+		assetsDirLevel: 1,
 		flatten: false
 		// todo: assets filter
 	}, options);
@@ -48,31 +49,47 @@ function assets(options) {
 	function process(css) {
 		return rework(css)
 			.use(rework.url(function(url) {
+				// data uri
 				if (url.indexOf('data:') === 0) {
 					return url;
 				}
 
-				var srcFile = path.join(options.srcDir, url);
-				if (!fs.existsSync(srcFile)) {
-					$p.util.log('[assets] Can not file asset file: ', srcFile);
+				var urlParts = require('url').parse(url);
+
+				// absolute url
+				if (urlParts.hostname) {
 					return url;
 				}
 
-				var targetFile = url.split('/').join(path.sep);
+				var srcFile = path.join(options.srcDir, urlParts.pathname);
+
+				if (!fs.existsSync(srcFile)) {
+					$p.util.log('[assets] Can not find asset file: ', srcFile);
+					return url;
+				}
+
+				var sourceDirectories = urlParts.pathname.split('/');
+				var targetFile = sourceDirectories.join(path.sep);
 
 				if (options.flatten) {
 					targetFile = path.relative(path.resolve(options.root), path.join(options.srcDir, targetFile));
 					targetFile = targetFile.split(path.sep).join('__');
 				}
+
+				sourceDirectories.pop(); // filename
+				for (var i = 1; i < options.assetsDirLevel; i++) {
+					targetFile = path.join(sourceDirectories.pop(), targetFile);
+				}
+
 				targetFile = path.join(options.assetsDir, targetFile);
 
 				mkdirp.sync(path.dirname(targetFile));
 				copyFile(srcFile, targetFile);
 
-				url = path.relative(options.targetDir, targetFile);
-				url = url.split(path.sep).join('/');
+				var newUrl = path.relative(options.targetDir, targetFile);
+				newUrl = newUrl.split(path.sep).join('/') + urlParts.search + urlParts.hash;
 
-				return url;
+				return newUrl;
 			}))
 			.toString();
 	}
