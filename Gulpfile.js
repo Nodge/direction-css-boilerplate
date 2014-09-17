@@ -279,9 +279,10 @@ gulp.task('assets', function(done) {
 			gulp.src(file, { cwdbase: true })
 				.pipe(assets({
 					root: path.join(options.paths.src, 'app'),
-					srcDir: path.join(options.paths.src, 'app/main/css'),
+					srcDir: path.dirname(file),
 					targetDir: path.join(options.paths.dist, 'css'),
-					assetsDir: path.join(options.paths.dist, 'images'),
+					assetsDir: options.paths.dist,
+					assetsDirLevel: 2,
 					flatten: true
 				}))
 				.pipe(gulp.dest('.tmp'))
