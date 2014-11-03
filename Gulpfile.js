@@ -41,6 +41,7 @@ function assets(options) {
 		srcDir: './',
 		targetDir: './',
 		assetsDir: './',
+		assetsDirLevel: 1,
 		flatten: false
 		// todo: assets filter
 	}, options);
@@ -48,31 +49,47 @@ function assets(options) {
 	function process(css) {
 		return rework(css)
 			.use(rework.url(function(url) {
+				// data uri
 				if (url.indexOf('data:') === 0) {
 					return url;
 				}
 
-				var srcFile = path.join(options.srcDir, url);
-				if (!fs.existsSync(srcFile)) {
-					$p.util.log('[assets] Can not file asset file: ', srcFile);
+				var urlParts = require('url').parse(url);
+
+				// absolute url
+				if (urlParts.hostname || url.substr(0, 2) === '//') {
 					return url;
 				}
 
-				var targetFile = url.split('/').join(path.sep);
+				var srcFile = path.join(options.srcDir, urlParts.pathname);
+
+				if (!fs.existsSync(srcFile)) {
+					$p.util.log('[assets] Can not find asset file: ', srcFile);
+					return url;
+				}
+
+				var sourceDirectories = urlParts.pathname.split('/');
+				var targetFile = sourceDirectories.join(path.sep);
 
 				if (options.flatten) {
 					targetFile = path.relative(path.resolve(options.root), path.join(options.srcDir, targetFile));
 					targetFile = targetFile.split(path.sep).join('__');
 				}
+
+				sourceDirectories.pop(); // filename
+				for (var i = 1; i < options.assetsDirLevel; i++) {
+					targetFile = path.join(sourceDirectories.pop(), targetFile);
+				}
+
 				targetFile = path.join(options.assetsDir, targetFile);
 
 				mkdirp.sync(path.dirname(targetFile));
 				copyFile(srcFile, targetFile);
 
-				url = path.relative(options.targetDir, targetFile);
-				url = url.split(path.sep).join('/');
+				var newUrl = path.relative(options.targetDir, targetFile);
+				newUrl = newUrl.split(path.sep).join('/') + urlParts.search + urlParts.hash;
 
-				return url;
+				return newUrl;
 			}))
 			.toString();
 	}
@@ -264,7 +281,8 @@ gulp.task('assets', function(done) {
 					root: path.join(options.paths.src, 'app'),
 					srcDir: path.join(options.paths.src, 'app/main/css'),
 					targetDir: path.join(options.paths.dist, 'css'),
-					assetsDir: path.join(options.paths.dist, 'images'),
+					assetsDir: options.paths.dist,
+					assetsDirLevel: 2,
 					flatten: true
 				}))
 				.pipe(gulp.dest('.tmp'))
@@ -790,7 +808,7 @@ gulp.task('build', ['initOptions'], function(done) {
  *
  */
 gulp.task('serve', [
-	'initOptions',
+	'initOptions'
 /*
 	'autoprefixer',
 	'autopolyfiller',
@@ -803,12 +821,12 @@ gulp.task('serve', [
 		'serveProcessJs',
 
 		function() {
-			gulp.watch(path.join(options.paths.src, '**', '*.{css,less}'), ['serveProcessCss']);
-			gulp.watch(path.join(options.paths.src, '**', '*.js'), ['serveProcessJs']);
-			gulp.watch(path.join(options.paths.src, '**', '*.hbs'), ['assemble']);
-			gulp.watch('./assets-config.json', ['serveProcessCss', 'serveProcessJs', 'assemble']);
-			gulp.watch('./build-options.json', ['serveProcessCss', 'serveProcessJs', 'assemble']);
-			gulp.watch('./page-list.json', ['assemble']);
+			gulp.watch(path.join(options.paths.src, '**', '*.{css,less}'), { interval: 500 }, ['serveProcessCss']);
+			gulp.watch(path.join(options.paths.src, '**', '*.js'), { interval: 500 }, ['serveProcessJs']);
+			gulp.watch(path.join(options.paths.src, '**', '*.hbs'), { interval: 500 }, ['assemble']);
+			gulp.watch('./assets-config.json', { interval: 500 }, ['serveProcessCss', 'serveProcessJs', 'assemble']);
+			gulp.watch('./build-options.json', { interval: 500 }, ['serveProcessCss', 'serveProcessJs', 'assemble']);
+			gulp.watch('./page-list.json', { interval: 500 }, ['assemble']);
 
 			gulp.src([
 				'.tmp',
@@ -822,7 +840,9 @@ gulp.task('serve', [
 /**
  *
  */
-gulp.task('serve-dist', function() {
+gulp.task('serve-dist', [
+	'initOptions'
+],function() {
 	gulp.src([options.paths.dist])
 		.pipe($p.webserver(options.server));
 });
@@ -841,8 +861,8 @@ gulp.task('watch', function() {
 				path.join(options.paths.src, '**', '*.hbs'),
 				'./assets-config.json',
 				'./build-options.json',
-				'./page-list.json',
-			], ['build']);
+				'./page-list.json'
+			], { interval: 500 }, ['build']);
 		}
 	);
 });
